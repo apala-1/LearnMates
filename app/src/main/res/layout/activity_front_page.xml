@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/gradiant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FrontPageActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="257dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="LEARN MATES"
+        android:textColor="#0B0B0B"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="323dp"
+        android:layout_height="284dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/rtext"
+        android:layout_width="421dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        android:fontFamily="@font/abhaya_libre"
+        android:text="Learn Together, Grow Together"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <Button
+        android:backgroundTint="#d7d5d5"
+        android:id="@+id/loginBth"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="44dp"
+        android:text="Log In"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rtext" />
+
+    <Button
+
+        android:id="@+id/signupBtn"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="28dp"
+        android:text="Sign Up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBth" />
+</androidx.constraintlayout.widget.ConstraintLayout>
