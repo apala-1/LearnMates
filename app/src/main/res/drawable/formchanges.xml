@@ -3,12 +3,10 @@
     <!-- Transparent background inside the border -->
     <solid android:color="@android:color/transparent" />
 
-    <!-- Border -->
     <stroke
         android:color="@color/black"
         android:width="2dp" />
 
-    <!-- Rounded corners -->
     <corners android:radius="10dp" />
 
     <!-- Padding inside the EditText -->
