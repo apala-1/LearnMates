@@ -2,5 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#BBB8B8</color>
+    <color name="grey">#878484</color> <!-- Selected the value from 'development' -->
+    <color name="pink">#E91E63</color> <!-- Added the new color from 'development' -->
 </resources>
