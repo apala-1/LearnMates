@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".SignupActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="240dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="115dp"
+        android:layout_marginBottom="575dp"
+        android:text="LEARN MATES"
+        android:textColor="@android:color/black"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="165dp"
+        android:layout_marginBottom="539dp"
+        android:text="Learn Together, Grow Together"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextFullName"
+        android:layout_width="297dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/subTitleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="239dp"
+        android:layout_marginBottom="438dp"
+        android:background="@drawable/formchanges"
+        android:backgroundTint="#000000"
+        android:hint="Full Name"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#777777"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="297dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/editTextFullName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="303dp"
+        android:layout_marginBottom="374dp"
+        android:background="@drawable/formchanges"
+        android:hint="Username"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="297dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/editTextUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:layout_marginBottom="307dp"
+        android:background="@drawable/formchanges"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="297dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/editTextEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="437dp"
+        android:layout_marginBottom="240dp"
+        android:background="@drawable/formchanges"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/termsCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="504dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="179dp"
+        android:text="I agree with the terms and conditions."
+        android:textColor="#444444"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/termsCheckbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="107dp"
+        android:background="@drawable/formchanges"
+        android:text="Sign Up"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
