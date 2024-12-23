@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
     <gradient
-
-        android:startColor="#d3aabc"
-        android:centerColor="#cd9aa4"
-        android:endColor="#80c4c7"
-        android:angle="36"
-
-        />
+        android:startColor="#D1A5B5"
+        android:centerColor="#B6999D"
+        android:endColor="#86C0C3"
+        android:angle="270" /> <!-- Top to bottom gradient -->
 </shape>
