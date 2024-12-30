@@ -12,7 +12,7 @@ class ProfilePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Enable edge-to-edge layout for a modern UI experience
+        // Enable edge-to-edge layout for a modern UI gi
         enableEdgeToEdge()
 
         // Set the content view to the XML layout
