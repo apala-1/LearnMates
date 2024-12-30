@@ -121,7 +121,8 @@
             android:background="@drawable/plain_text_border"
             android:fontFamily="@font/inria"
             android:hint="Write Feedback"
-            android:inputType="text"
+            android:inputType="textMultiLine"
+            android:minLines="1"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
