@@ -11,130 +11,92 @@
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="285dp"
-        android:layout_marginTop="435dp"
-        android:layout_marginEnd="22dp"
-        android:fontFamily="monospace"
-        android:layout_marginBottom="232dp"
         android:background="@drawable/button_background"
+        android:fontFamily="monospace"
         android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="435dp"
-        android:layout_marginEnd="276dp"
-        android:layout_marginBottom="232dp"
-        android:fontFamily="monospace"
-        android:background="@drawable/button_background"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="179dp"
-        android:layout_marginBottom="506dp"
-        android:fontFamily="@font/inria"
-        android:gravity="center"
-        android:text="Getting Started"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="219dp"
-        android:layout_marginBottom="456dp"
-        android:text="Follow these steps to get started with our application:"
-        android:textColor="#555555"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tvNotes"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="393dp"
-        android:layout_marginBottom="306dp"
-        android:text="Note: Ensure your app is updated regularly for the best experience."
-        android:textColor="@color/black"
-        android:textFontWeight="900"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/tvStep2"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="303dp"
-        android:layout_marginBottom="393dp"
-        android:text="1. Sign up for a new account or log in with your credentials."
-        android:textColor="#333333"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="508dp" />
 
     <TextView
         android:id="@+id/tvStep3"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="331dp"
-        android:layout_marginBottom="365dp"
         android:text="2. Explore the features by navigating through the menu."
         android:textColor="#333333"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="Follow these steps to get started with our application:"
+        android:textColor="#555555"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="292dp" />
 
     <TextView
         android:id="@+id/tvStep4"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="358dp"
-        android:layout_marginBottom="338dp"
         android:text="3. For help, visit the Help Center from the main menu."
         android:textColor="#333333"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="423dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="257dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/inria"
+        android:gravity="center"
+        android:text="Getting Started"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <TextView
+        android:id="@+id/tvStep2"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="1. Sign up for a new account or log in with your credentials."
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="368dp" />
+
+    <TextView
+        android:id="@+id/tvNotes"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="Note: Ensure your app is updated regularly for the best experience."
+        android:textColor="@color/black"
+        android:textFontWeight="900"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="458dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:fontFamily="monospace"
+        android:text="Back"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="508dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="209dp"
+        android:layout_height="176dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="27dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
