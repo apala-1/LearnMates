@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LearnMates</string>
+    <string name="cover_photo">Cover Photo</string>
+    <string name="like">Like</string>
+    <string name="kimti_shrestha">Kimti Shrestha</string>
+    <string name="save">Save</string>
+    <string name="todo">TODO</string>
+    <string name="about_me">About Me</string>
+    <string name="shared_resources">Shared Resources</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
