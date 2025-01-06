@@ -1,4 +1,4 @@
-package com.example.learnmates.ui
+package com.example.learnmates.ui.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle

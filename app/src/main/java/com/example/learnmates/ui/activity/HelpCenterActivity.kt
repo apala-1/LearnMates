@@ -1,4 +1,4 @@
-package com.example.learnmates.ui
+package com.example.learnmates.ui.activity
 
 import android.os.Bundle
 import android.widget.TextView
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.learnmates.R
-import androidx.appcompat.widget.SearchView
 
 class HelpCenterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.learnmates.ui
+package com.example.learnmates.ui.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

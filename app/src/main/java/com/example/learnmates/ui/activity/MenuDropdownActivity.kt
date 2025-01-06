@@ -1,15 +1,14 @@
-package com.example.learnmates
+package com.example.learnmates.ui.activity
 
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.learnmates.R
 
 class MenuDropdownActivity : AppCompatActivity() {
     private lateinit var  menuIcon: ImageView
@@ -51,4 +50,3 @@ class MenuDropdownActivity : AppCompatActivity() {
       }
     }
 }
-

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".AboutYouPageActivity">
+    tools:context=".ui.activity.AboutYouPageActivity">
     <!-- Cover Photo -->
     <ImageView
         android:id="@+id/coverPhoto"
