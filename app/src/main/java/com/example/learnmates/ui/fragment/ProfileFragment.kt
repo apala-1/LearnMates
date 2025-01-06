@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.PopupMenu
@@ -20,36 +23,71 @@ import com.example.learnmates.ui.activity.SearchActivity
 
 class ProfileFragment : Fragment() {
 
+
+    private lateinit var aboutMeButton: Button
+    private lateinit var aboutMeSection: LinearLayout
+    private lateinit var aboutMeText: TextView
+    private lateinit var editButton: Button
+    private lateinit var saveButton: Button
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        // Reference to the ImageView
-        val additionalIcon: ImageView = view.findViewById(R.id.additionalIcon)
+        val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        // Set up click listener to show popup menu
+        aboutMeButton = rootView.findViewById(R.id.aboutMeButton)
+        aboutMeSection = rootView.findViewById(R.id.aboutMeSection)
+        aboutMeText = rootView.findViewById(R.id.aboutMeText)
+        editButton = rootView.findViewById(R.id.editButton)
+        saveButton = rootView.findViewById(R.id.saveButton)
+
+
+        aboutMeButton.setOnClickListener {
+            aboutMeSection.visibility = View.VISIBLE
+        }
+
+
+        editButton.setOnClickListener {
+
+        }
+
+
+        saveButton.setOnClickListener {
+            aboutMeText.apply {
+                isFocusableInTouchMode = false
+                isFocusable = false
+            }
+
+            val updatedText = aboutMeText.text.toString()
+
+            Toast.makeText(context, "About Me saved: $updatedText", Toast.LENGTH_SHORT).show()
+
+
+            aboutMeSection.visibility = View.GONE
+        }
+
+
+        val additionalIcon: ImageView = rootView.findViewById(R.id.additionalIcon)
         additionalIcon.setOnClickListener {
             showPopupMenu(it)
         }
 
-        return view
+        return rootView
     }
 
     private fun showPopupMenu(view: View) {
-        // Create a PopupMenu
+
         val popupMenu = PopupMenu(requireContext(), view)
 
-        // Inflate the menu resource
+
         popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
 
-        // Handle menu item clicks
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    // Navigate to HomeActivity
+
                     val intent = Intent(requireContext(), HomeActivity::class.java)
                     startActivity(intent)
                     true
@@ -59,37 +97,37 @@ class ProfileFragment : Fragment() {
                     true
                 }
                 R.id.message -> {
-                    // Navigate to MessageActivity
+
                     val intent = Intent(requireContext(), MessageActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.search -> {
-                    // Navigate to SearchActivity
+
                     val intent = Intent(requireContext(), SearchActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.notification -> {
-                    // Navigate to NotificationActivity
+
                     val intent = Intent(requireContext(), NotificationActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.feedback -> {
-                    // Navigate to FeedbackActivity
+
                     val intent = Intent(requireContext(), FeedbackActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.saved -> {
-                    // Navigate to SavedActivity
+
                     val intent = Intent(requireContext(), SavedActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.helpcenter -> {
-                    // Navigate to HelpCenterActivity
+
                     val intent = Intent(requireContext(), HelpCenterActivity::class.java)
                     startActivity(intent)
                     true
@@ -98,7 +136,7 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        // Show the popup menu
+
         popupMenu.show()
     }
 }
