@@ -13,6 +13,15 @@
         android:theme="@style/Theme.LearnMates"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.activity.SavedActivity"
             android:exported="true">
             <intent-filter>
@@ -30,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.MessageActivity"
             android:exported="true">
@@ -49,7 +57,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.SignupActivity"
             android:exported="true">
