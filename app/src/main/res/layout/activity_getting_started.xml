@@ -2,102 +2,151 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:id="@+id/main"
     android:padding="16dp">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
+        android:layout_marginStart="282dp"
+        android:layout_marginTop="524dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="143dp"
+        android:background="@drawable/formchanges"
         android:fontFamily="monospace"
         android:text="Next"
-        tools:layout_editor_absoluteX="266dp"
-        tools:layout_editor_absoluteY="508dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvStep3"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginBottom="284dp"
         android:text="2. Explore the features by navigating through the menu."
         android:textColor="#333333"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvSubtitle"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginBottom="367dp"
         android:text="Follow these steps to get started with our application:"
         android:textColor="#555555"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="292dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvStep4"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="439dp"
+        android:layout_marginBottom="257dp"
         android:text="3. For help, visit the Help Center from the main menu."
         android:textColor="#333333"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="423dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="257dp"
         android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="254dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="421dp"
         android:fontFamily="@font/inria"
         android:gravity="center"
         android:text="Getting Started"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="238dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvStep2"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginBottom="312dp"
         android:text="1. Sign up for a new account or log in with your credentials."
         android:textColor="#333333"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="368dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNotes"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="474dp"
+        android:layout_marginBottom="225dp"
         android:text="Note: Ensure your app is updated regularly for the best experience."
         android:textColor="@color/black"
         android:textFontWeight="900"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="458dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="524dp"
+        android:layout_marginEnd="283dp"
+        android:layout_marginBottom="143dp"
+        android:background="@drawable/formchanges"
         android:fontFamily="monospace"
         android:text="Back"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="508dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="209dp"
         android:layout_height="176dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="27dp" />
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="496dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
