@@ -23,31 +23,35 @@
         app:srcCompat="@drawable/baseline_menu_24" />
 
     <TextView
-        android:id="@+id/noti"
+        android:id="@+id/notificationsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="188dp"
-        android:layout_marginBottom="549dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="616dp"
         android:fontFamily="@font/inria"
-        android:text="Notification"
+        android:text="Notifications"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="542dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="188dp">
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
