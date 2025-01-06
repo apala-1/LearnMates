@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Profile" />
+    <item
+        android:id="@+id/message"
+        android:icon="@drawable/baseline_message_24"
+        android:title="Message" />
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Search" />
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/baseline_notifications_24"
+        android:title="Notification" />
+    <item
+    android:id="@+id/feedback"
+        android:icon="@drawable/baseline_feedback_24"
+    android:title="Feedback" />
+    <item
+        android:id="@+id/saved"
+        android:icon="@drawable/baseline_bookmark_24"
+        android:title="Saved" />
+    <item
+        android:id="@+id/helpcenter"
+        android:title="Help Center" />
+
+</menu>

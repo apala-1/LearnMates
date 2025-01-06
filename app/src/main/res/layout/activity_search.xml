@@ -8,23 +8,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.activity.SearchActivity">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="276dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="554dp"
-        android:background="@drawable/button_background"
-        android:ems="10"
-        android:hint="  Search"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="42dp"
@@ -35,20 +18,39 @@
         android:layout_marginBottom="616dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_menu_24" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_dehaze_24" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="564dp"
+    <SearchView
+        android:layout_width="381dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="525dp"
+        android:background="@drawable/button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/baseline_search_24" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/searchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="290dp"
+        android:layout_marginBottom="613dp"
+        android:text="Search"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

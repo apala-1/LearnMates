@@ -1,5 +1,6 @@
 package com.example.learnmates.ui.activity
 
+import com.example.learnmates.ui.fragment.ProfileFragment
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.learnmates.R
 import com.example.learnmates.databinding.ActivityHomeBinding
 import com.example.learnmates.ui.fragment.HomePageFragment
-import com.example.learnmates.ui.fragment.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
