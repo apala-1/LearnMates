@@ -1,4 +1,4 @@
-package com.example.learnmates.ui.activity
+package com.example.learnmates.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
