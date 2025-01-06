@@ -1,6 +1,5 @@
-package com.example.learnmates.ui
+package com.example.learnmates.ui.activity
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View

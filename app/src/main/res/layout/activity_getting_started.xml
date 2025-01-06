@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:fontFamily="monospace"
+        android:text="Next"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="508dp" />
+
+    <TextView
+        android:id="@+id/tvStep3"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="2. Explore the features by navigating through the menu."
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="396dp" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="Follow these steps to get started with our application:"
+        android:textColor="#555555"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="292dp" />
+
+    <TextView
+        android:id="@+id/tvStep4"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="3. For help, visit the Help Center from the main menu."
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="423dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="257dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/inria"
+        android:gravity="center"
+        android:text="Getting Started"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <TextView
+        android:id="@+id/tvStep2"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="1. Sign up for a new account or log in with your credentials."
+        android:textColor="#333333"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="368dp" />
+
+    <TextView
+        android:id="@+id/tvNotes"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:text="Note: Ensure your app is updated regularly for the best experience."
+        android:textColor="@color/black"
+        android:textFontWeight="900"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="458dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:fontFamily="monospace"
+        android:text="Back"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="508dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="209dp"
+        android:layout_height="176dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
