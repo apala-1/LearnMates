@@ -1,5 +1,7 @@
 package com.example.learnmates.model
 
-data class SearchModel(
-    var searchedName: String = ""
-)
+data class SearchModel (
+    var userNameSearch : String = ""
+){
+
+}

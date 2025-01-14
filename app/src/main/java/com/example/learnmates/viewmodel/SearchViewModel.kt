@@ -1,16 +1,23 @@
 package com.example.learnmates.viewmodel
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import com.example.learnmates.model.SearchModel
 import com.example.learnmates.repository.SearchRepository
 
 class SearchViewModel(val repository: SearchRepository) {
-    fun getAllProduct(){
-        repository.getAllProduct{
-                products, success, message ->
+    var _allusers = MutableLiveData<List<SearchModel>?>()
+
+        get() = _allusers
+
+
+    fun getAllUsers(){
+        repository.getAllUsers(){
+                users, success, message ->
             if(success){
-                _allrecords.value = searchedName
+                _allusers.value = users
             }
         }
 
-}
     }
+
+}

@@ -5,28 +5,32 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learnmates.R
 import com.example.learnmates.adapter.SearchAdapter
 import com.example.learnmates.databinding.ActivitySearchBinding
-import com.example.learnmates.repository.SearchReposiitoryImpl
+import com.example.learnmates.repository.SearchRepositoryImpl
 import com.example.learnmates.viewmodel.SearchViewModel
 import java.util.ArrayList
 
 class SearchActivity : AppCompatActivity() {
     lateinit var binding: ActivitySearchBinding
+    lateinit var searchViewModel: SearchViewModel
+    lateinit var adapter: SearchAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding=ActivitySearchBinding.inflate(layoutInflater)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.searchbtn.setOnClickListener{
-            val searchtext = binding.SearchBar.text.toString()
-            if(searchtext.isEmpty()){
-                binding.SearchBar.setError("Invalid Input")
-            }
-            setupSearchRecyclerView(searchtext);
-        }
+        adapter = SearchAdapter(this@SearchActivity, ArrayList())
+
+        var repo = SearchRepositoryImpl()
+        searchViewModel= SearchViewModel(repo)
+
+        searchViewModel.getAllUsers()
+
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -36,11 +40,5 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupSearchRecyclerView(searchtext: String) {
-        adapter = SearchAdapter(this@SearchActivity, ArrayList())
-        var repo = SearchReposiitoryImpl()
-        SearchViewModel.getAllProduct()
 
-
-    }
 }
