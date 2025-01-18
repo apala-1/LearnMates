@@ -1,14 +1,16 @@
 package com.example.learnmates.adapter
 
-import android.net.Uri
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.learnmates.R
 import com.example.learnmates.model.Post
+import java.io.File
 
 class PostAdapter(private var posts: MutableList<Post>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -27,11 +29,12 @@ class PostAdapter(private var posts: MutableList<Post>) : RecyclerView.Adapter<P
         holder.postText.text = post.text
         if (post.imageUri != null) {
             holder.postImage.visibility = View.VISIBLE
-            holder.postImage.setImageURI(post.imageUri)
+            Glide.with(holder.postImage.context).load(post.imageUri).into(holder.postImage)
         } else {
             holder.postImage.visibility = View.GONE
         }
     }
+
 
     override fun getItemCount(): Int = posts.size
 

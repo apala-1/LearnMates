@@ -10,7 +10,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/simple_button"
+        android:id="@+id/loginBtn"
         android:layout_width="248dp"
         android:layout_height="50dp"
         android:layout_marginStart="81dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/logo"
         android:layout_width="163dp"
         android:layout_height="161dp"
         android:layout_marginStart="125dp"

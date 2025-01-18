@@ -2,7 +2,9 @@ package com.example.learnmates.ui.fragment
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,7 +74,12 @@ class ProfileFragment : Fragment() {
         }
 
         editButton.setOnClickListener {
-            // Implement edit functionality if needed
+            aboutMeText.apply {
+                isFocusableInTouchMode = true
+                isFocusable = true
+                requestFocus() // Move the cursor to the text field
+            }
+            Toast.makeText(context, "You can now edit your About Me section.", Toast.LENGTH_SHORT).show()
         }
 
         saveButton.setOnClickListener {
@@ -98,8 +105,10 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_SHARE_POST && resultCode == Activity.RESULT_OK) {
             val newPostText = data?.getStringExtra(SharePostsActivity.EXTRA_POST_TEXT)
-            if (!newPostText.isNullOrBlank()) {
-                val newPost = Post(text = newPostText)
+            val newPostImageUri = data?.getStringExtra("extra_image_uri")?.let { Uri.parse(it) }
+            Log.d("ProfileFragment", "Received image URI: $newPostImageUri")
+            if (!newPostText.isNullOrBlank() || newPostImageUri != null) {
+                val newPost = Post(text = newPostText.orEmpty(), imageUri = newPostImageUri)
                 postViewModel.addPost(newPost)
             }
         }

@@ -39,9 +39,12 @@ class SharePostsActivity : AppCompatActivity() {
 
                 val resultIntent = Intent().apply {
                     putExtra(EXTRA_POST_TEXT, text)
+                    putExtra("extra_image_uri", selectedImageUri?.toString())
                 }
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
+
+                selectedImageUri = null
             } else {
                 Toast.makeText(this, "Enter text or select an image to post!", Toast.LENGTH_SHORT).show()
             }
@@ -62,6 +65,8 @@ class SharePostsActivity : AppCompatActivity() {
                 visibility = View.VISIBLE
                 setImageURI(selectedImageUri)
             }
+        } else{
+            selectedImageUri = null
         }
     }
 
