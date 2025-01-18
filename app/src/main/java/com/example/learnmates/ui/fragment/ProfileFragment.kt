@@ -19,85 +19,86 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learnmates.R
 import com.example.learnmates.adapter.PostAdapter
+import com.example.learnmates.databinding.FragmentProfileBinding
 import com.example.learnmates.model.Post
+import com.example.learnmates.repository.UserRepositoryImpl
 import com.example.learnmates.ui.activity.*
 import com.example.learnmates.viewmodel.PostViewModel
+import com.example.learnmates.viewmodel.UserViewModel
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var aboutMeButton: Button
-    private lateinit var aboutMeSection: LinearLayout
-    private lateinit var aboutMeText: TextView
-    private lateinit var editButton: Button
-    private lateinit var saveButton: Button
-    private lateinit var sharePostsButton: Button
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var postAdapter: PostAdapter
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var userViewModel: UserViewModel
 
-    private val postViewModel: PostViewModel by activityViewModels() // Shared ViewModel
+    private lateinit var postAdapter: PostAdapter
+    private val postViewModel: PostViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Initialize UI elements
-        aboutMeButton = rootView.findViewById(R.id.aboutMeButton)
-        aboutMeSection = rootView.findViewById(R.id.aboutMeSection)
-        aboutMeText = rootView.findViewById(R.id.aboutMeText)
-        editButton = rootView.findViewById(R.id.editButton)
-        saveButton = rootView.findViewById(R.id.saveButton)
-        sharePostsButton = rootView.findViewById(R.id.SharePosts)
-        recyclerView = rootView.findViewById(R.id.recyclerView)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Initialize RecyclerView and Adapter
+        val repo = UserRepositoryImpl()
+        userViewModel = UserViewModel(repo)
+
         postAdapter = PostAdapter(mutableListOf())
-        recyclerView.apply {
+        binding.recyclerView.apply {
             adapter = postAdapter
             layoutManager = LinearLayoutManager(context)
         }
 
-        // Observe changes to the posts in the ViewModel
         postViewModel.posts.observe(viewLifecycleOwner) { posts ->
             postAdapter.updatePosts(posts)
         }
 
-        // Set button listeners
-        sharePostsButton.setOnClickListener {
+        binding.SharePosts.setOnClickListener {
             val intent = Intent(requireContext(), SharePostsActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_SHARE_POST)
         }
 
-        aboutMeButton.setOnClickListener {
-            aboutMeSection.visibility = View.VISIBLE
+        binding.aboutMeButton.setOnClickListener {
+            binding.aboutMeSection.visibility = View.VISIBLE
         }
 
-        editButton.setOnClickListener {
-            aboutMeText.apply {
+        binding.editButton.setOnClickListener {
+            binding.aboutMeText.apply {
                 isFocusableInTouchMode = true
                 isFocusable = true
-                requestFocus() // Move the cursor to the text field
+                requestFocus()
             }
             Toast.makeText(context, "You can now edit your About Me section.", Toast.LENGTH_SHORT).show()
         }
 
-        saveButton.setOnClickListener {
-            aboutMeText.apply {
+        binding.saveButton.setOnClickListener {
+            binding.aboutMeText.apply {
                 isFocusableInTouchMode = false
                 isFocusable = false
             }
-            val updatedText = aboutMeText.text.toString()
+            val updatedText = binding.aboutMeText.text.toString()
             Toast.makeText(context, "About Me saved: $updatedText", Toast.LENGTH_SHORT).show()
-            aboutMeSection.visibility = View.GONE
+            binding.aboutMeSection.visibility = View.GONE
         }
 
-        // Handle dropdown menu
-        rootView.findViewById<View>(R.id.additionalIcon)?.setOnClickListener { view ->
+        binding.additionalIcon.setOnClickListener { view ->
             showPopupMenu(view)
         }
 
-        return rootView
+        val currentUser = userViewModel.getCurrentUser()
+        currentUser?.uid?.let { userId ->
+            userViewModel.getUserFromDatabase(userId)
+        }
+
+        userViewModel.userData.observe(viewLifecycleOwner) { user ->
+            binding.profileName.text = user?.fullname
+            binding.username.text = user?.username
+        }
     }
 
     @Deprecated("Deprecated in favor of Activity Result API")

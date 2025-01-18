@@ -76,16 +76,16 @@ class UserRepositoryImpl: UserRepository {
         userId: String,
         callback: (UserModel?, Boolean, String) -> Unit
     ) {
-        reference.child(userId).addValueEventListener(object  : ValueEventListener {
+        reference.child(userId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
-                    var  model = snapshot.getValue(UserModel::class.java)
+                    var model = snapshot.getValue(UserModel::class.java)
                     callback(model,true,"Details fetched successfully")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                callback(null,false,error.message)
+                callback(null, false, error.message)
             }
         })
     }

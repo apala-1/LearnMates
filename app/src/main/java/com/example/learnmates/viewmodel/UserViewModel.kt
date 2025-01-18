@@ -31,7 +31,7 @@ class UserViewModel(val repo: UserRepository) {
 
         get() = _userData
 
-    fun getUserFromDatabase(userId: String, callback: (UserModel?, Boolean, String) -> Unit){
+    fun getUserFromDatabase(userId: String){
         repo.getUserFromDatabase(userId){
             userModel, success, message ->
             if (success){
