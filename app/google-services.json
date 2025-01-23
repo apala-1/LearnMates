@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "238657881696",
+    "firebase_url": "https://learnmates-842cd-default-rtdb.firebaseio.com",
+    "project_id": "learnmates-842cd",
+    "storage_bucket": "learnmates-842cd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238657881696:android:e77b88c2010d3a303d6505",
+        "android_client_info": {
+          "package_name": "com.example.learnmates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq-sMMTzkXjIBgI6OsSLMvIgsPKlrvdoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

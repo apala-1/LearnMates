@@ -1,95 +1,128 @@
 package com.example.learnmates.ui.fragment
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.PopupMenu
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.learnmates.R
-import com.example.learnmates.ui.activity.FeedbackActivity
-import com.example.learnmates.ui.activity.HelpCenterActivity
-import com.example.learnmates.ui.activity.HomeActivity
-import com.example.learnmates.ui.activity.MessageActivity
-import com.example.learnmates.ui.activity.NotificationActivity
-import com.example.learnmates.ui.activity.SavedActivity
-import com.example.learnmates.ui.activity.SearchActivity
+import com.example.learnmates.adapter.PostAdapter
+import com.example.learnmates.databinding.FragmentProfileBinding
+import com.example.learnmates.model.Post
+import com.example.learnmates.repository.UserRepositoryImpl
+import com.example.learnmates.ui.activity.*
+import com.example.learnmates.viewmodel.PostViewModel
+import com.example.learnmates.viewmodel.UserViewModel
 
 class ProfileFragment : Fragment() {
 
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var userViewModel: UserViewModel
 
-    private lateinit var aboutMeButton: Button
-    private lateinit var aboutMeSection: LinearLayout
-    private lateinit var aboutMeText: TextView
-    private lateinit var editButton: Button
-    private lateinit var saveButton: Button
+    private lateinit var postAdapter: PostAdapter
+    private val postViewModel: PostViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        aboutMeButton = rootView.findViewById(R.id.aboutMeButton)
-        aboutMeSection = rootView.findViewById(R.id.aboutMeSection)
-        aboutMeText = rootView.findViewById(R.id.aboutMeText)
-        editButton = rootView.findViewById(R.id.editButton)
-        saveButton = rootView.findViewById(R.id.saveButton)
+        val repo = UserRepositoryImpl()
+        userViewModel = UserViewModel(repo)
 
-
-        aboutMeButton.setOnClickListener {
-            aboutMeSection.visibility = View.VISIBLE
+        postAdapter = PostAdapter(mutableListOf())
+        binding.recyclerView.apply {
+            adapter = postAdapter
+            layoutManager = LinearLayoutManager(context)
         }
 
-
-        editButton.setOnClickListener {
-
+        postViewModel.posts.observe(viewLifecycleOwner) { posts ->
+            postAdapter.updatePosts(posts)
         }
 
+        binding.SharePosts.setOnClickListener {
+            val intent = Intent(requireContext(), SharePostsActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_SHARE_POST)
+        }
 
-        saveButton.setOnClickListener {
-            aboutMeText.apply {
+        binding.aboutMeButton.setOnClickListener {
+            binding.aboutMeSection.visibility = View.VISIBLE
+        }
+
+        binding.editButton.setOnClickListener {
+            binding.aboutMeText.apply {
+                isFocusableInTouchMode = true
+                isFocusable = true
+                requestFocus()
+            }
+            Toast.makeText(context, "You can now edit your About Me section.", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.saveButton.setOnClickListener {
+            binding.aboutMeText.apply {
                 isFocusableInTouchMode = false
                 isFocusable = false
             }
-
-            val updatedText = aboutMeText.text.toString()
-
+            val updatedText = binding.aboutMeText.text.toString()
             Toast.makeText(context, "About Me saved: $updatedText", Toast.LENGTH_SHORT).show()
-
-
-            aboutMeSection.visibility = View.GONE
+            binding.aboutMeSection.visibility = View.GONE
         }
 
-
-        val additionalIcon: ImageView = rootView.findViewById(R.id.additionalIcon)
-        additionalIcon.setOnClickListener {
-            showPopupMenu(it)
+        binding.additionalIcon.setOnClickListener { view ->
+            showPopupMenu(view)
         }
 
-        return rootView
+        val currentUser = userViewModel.getCurrentUser()
+        currentUser?.uid?.let { userId ->
+            userViewModel.getUserFromDatabase(userId)
+        }
+
+        userViewModel.userData.observe(viewLifecycleOwner) { user ->
+            binding.profileName.text = user?.fullname
+            binding.username.text = user?.username
+        }
+    }
+
+    @Deprecated("Deprecated in favor of Activity Result API")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_SHARE_POST && resultCode == Activity.RESULT_OK) {
+            val newPostText = data?.getStringExtra(SharePostsActivity.EXTRA_POST_TEXT)
+            val newPostImageUri = data?.getStringExtra("extra_image_uri")?.let { Uri.parse(it) }
+            Log.d("ProfileFragment", "Received image URI: $newPostImageUri")
+            if (!newPostText.isNullOrBlank() || newPostImageUri != null) {
+                val newPost = Post(text = newPostText.orEmpty(), imageUri = newPostImageUri)
+                postViewModel.addPost(newPost)
+            }
+        }
     }
 
     private fun showPopupMenu(view: View) {
-
         val popupMenu = PopupMenu(requireContext(), view)
-
-
         popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-
-                    val intent = Intent(requireContext(), HomeActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), HomeActivity::class.java))
                     true
                 }
                 R.id.profile -> {
@@ -97,46 +130,36 @@ class ProfileFragment : Fragment() {
                     true
                 }
                 R.id.message -> {
-
-                    val intent = Intent(requireContext(), MessageActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), MessageActivity::class.java))
                     true
                 }
                 R.id.search -> {
-
-                    val intent = Intent(requireContext(), SearchActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
                     true
                 }
                 R.id.notification -> {
-
-                    val intent = Intent(requireContext(), NotificationActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), NotificationActivity::class.java))
                     true
                 }
                 R.id.feedback -> {
-
-                    val intent = Intent(requireContext(), FeedbackActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), FeedbackActivity::class.java))
                     true
                 }
                 R.id.saved -> {
-
-                    val intent = Intent(requireContext(), SavedActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), SavedActivity::class.java))
                     true
                 }
                 R.id.helpcenter -> {
-
-                    val intent = Intent(requireContext(), HelpCenterActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireContext(), HelpCenterActivity::class.java))
                     true
                 }
                 else -> false
             }
         }
-
-
         popupMenu.show()
+    }
+
+    companion object {
+        const val REQUEST_CODE_SHARE_POST = 1001
     }
 }

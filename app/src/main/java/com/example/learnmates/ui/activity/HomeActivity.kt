@@ -12,8 +12,14 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.learnmates.R
 import com.example.learnmates.databinding.ActivityHomeBinding
 import com.example.learnmates.ui.fragment.HomePageFragment
+import androidx.activity.viewModels
+import com.example.learnmates.viewmodel.PostViewModel
 
 class HomeActivity : AppCompatActivity() {
+
+        private val postViewModel: PostViewModel by viewModels()
+
+
     lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
