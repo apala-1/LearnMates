@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginBottom="531dp"
-        android:background="@color/grey"
+        android:background="@color/white"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="248dp"
         android:layout_marginEnd="253dp"
         android:layout_marginBottom="456dp"
-        android:text="Kimti Shrestha"
+        android:text=""
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -45,8 +45,8 @@
         android:layout_marginTop="138dp"
         android:layout_marginEnd="291dp"
         android:layout_marginBottom="497dp"
-        android:src="@drawable/profile"
-        app:civ_border_color="@color/white"
+        android:src="@drawable/baseline_person_24"
+        app:civ_border_color="@color/grey"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:layout_marginTop="275dp"
         android:layout_marginEnd="330dp"
         android:layout_marginBottom="434dp"
-        android:text="__kim__"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SharePosts"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -78,9 +78,8 @@
         android:layout_marginTop="341dp"
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="342dp"
-        android:backgroundTint="#E0E0E0"
+        android:background="@drawable/button_background"
         android:text="Share Posts"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,41 +92,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/aboutMeButton">
 
-
-        <TextView
+        <EditText
             android:id="@+id/aboutMeText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="This is your default about me text."
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:hint="Enter your About Me"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="textMultiLine"
+            />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/editButton"
+        <!-- Horizontal layout for buttons -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/button_background"
-            android:text="Edit" />
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/button_background"
-            android:text="Save" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/editButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:text="Edit" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_background"
+                android:text="Save" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/aboutMeButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -135,9 +143,8 @@
         android:layout_marginTop="341dp"
         android:layout_marginEnd="235dp"
         android:layout_marginBottom="342dp"
-        android:backgroundTint="#E0E0E0"
+        android:background="@drawable/button_background"
         android:text="@string/about_me"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,53 +155,20 @@
         android:id="@+id/sharedResourcesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="420dp"
-        android:layout_marginEnd="235dp"
-        android:layout_marginBottom="287dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="241dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/shared_resources"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/aboutMeSection" />
+        app:layout_constraintTop_toBottomOf="@id/aboutMeSection" />
 
-    <Button
-        android:id="@+id/SaveButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="657dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="#E0E0E0"
-        android:drawablePadding="8dp"
-        android:text="Save📘"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/LikeButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="657dp"
-        android:layout_marginEnd="281dp"
-        android:layout_marginBottom="26dp"
-        android:backgroundTint="#E0E0E0"
-        android:drawableStart="@drawable/like"
-        android:drawablePadding="8dp"
-        android:text="👍 Like"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/additionalIcon"
@@ -212,7 +186,8 @@
         tools:ignore="NotSibling" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="411dp"
         android:layout_height="275dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
