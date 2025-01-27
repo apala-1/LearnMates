@@ -22,16 +22,14 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setContentView(R.layout.activity_log_in)
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         loadingUtils = LoadingUtils(this)
         firebaseAuth = FirebaseAuth.getInstance()
-
         binding.loginBtn.setOnClickListener {
             val email  =binding.editTextEmail.text.toString()
             val password  =binding.editTextPassword.text.toString()
-
             if(email.isNotEmpty()&&password.isNotEmpty()){
                 loadingUtils.show()
                 firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
@@ -82,5 +80,4 @@ class LogInActivity : AppCompatActivity() {
         )
         startActivity(intent)
     }
-
 }

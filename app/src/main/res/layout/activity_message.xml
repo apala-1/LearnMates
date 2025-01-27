@@ -68,11 +68,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/buddy1Chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chat_button_background"
+            android:backgroundTint="@color/green"
             android:padding="4dp"
             android:text="Chat Now!"
             android:textColor="@android:color/black"
@@ -109,11 +109,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/buddy2Chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chat_button_background"
+            android:backgroundTint="@color/green"
             android:padding="4dp"
             android:text="Chat Now!"
             android:textColor="@android:color/black"
@@ -150,11 +150,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/buddy3Chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chat_button_background"
+            android:backgroundTint="@color/green"
             android:padding="4dp"
             android:text="Chat Now!"
             android:textColor="@android:color/black"
@@ -164,15 +164,18 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <Button
+
         android:id="@+id/findMoreBuddies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="sans-serif"
+        android:backgroundTint="@color/green"
         android:text="+ FIND MORE BUDDIES"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
