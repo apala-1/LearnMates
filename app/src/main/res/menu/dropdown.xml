@@ -31,5 +31,8 @@
     <item
         android:id="@+id/helpcenter"
         android:title="Help Center" />
+    <item
+        android:id="@+id/settings"
+        android:title="Settings" />
 
 </menu>
