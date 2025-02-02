@@ -16,8 +16,6 @@ import androidx.activity.viewModels
 
 class HomeActivity : AppCompatActivity() {
 
-        private val postViewModel: PostViewModel by viewModels()
-
 
     lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
