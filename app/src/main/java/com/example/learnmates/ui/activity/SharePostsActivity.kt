@@ -2,26 +2,28 @@ package com.example.learnmates.ui.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learnmates.R
-import com.example.learnmates.model.Post
-import com.example.learnmates.viewmodel.PostViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import java.io.ByteArrayOutputStream
 
 class SharePostsActivity : AppCompatActivity() {
 
     private val IMAGE_PICK_REQUEST_CODE = 101
     private var selectedImageUri: Uri? = null
-
-    private val postViewModel: PostViewModel by viewModels()
+    private var selectedImageBase64: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +35,8 @@ class SharePostsActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.postButton).setOnClickListener {
             val text = findViewById<EditText>(R.id.postEditText).text.toString()
-            if (text.isNotBlank() || selectedImageUri != null) {
-                val newPost = Post(text, selectedImageUri)
-                postViewModel.addPost(newPost)
-
-                val resultIntent = Intent().apply {
-                    putExtra(EXTRA_POST_TEXT, text)
-                    putExtra("extra_image_uri", selectedImageUri?.toString())
-                }
-                setResult(Activity.RESULT_OK, resultIntent)
-                finish()
-
-                selectedImageUri = null
+            if (text.isNotBlank() || selectedImageBase64 != null) {
+                savePostToFirebase(text, selectedImageBase64)
             } else {
                 Toast.makeText(this, "Enter text or select an image to post!", Toast.LENGTH_SHORT).show()
             }
@@ -59,18 +51,52 @@ class SharePostsActivity : AppCompatActivity() {
     @Deprecated("Deprecated in favor of Activity Result API")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_PICK_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == IMAGE_PICK_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             selectedImageUri = data?.data
-            findViewById<ImageView>(R.id.previewImageView).apply {
-                visibility = View.VISIBLE
-                setImageURI(selectedImageUri)
+            selectedImageUri?.let {
+                findViewById<ImageView>(R.id.previewImageView).apply {
+                    visibility = View.VISIBLE
+                    setImageURI(it)
+                }
+                selectedImageBase64 = uriToBase64(it)
             }
-        } else{
-            selectedImageUri = null
         }
     }
 
-    companion object {
-        const val EXTRA_POST_TEXT = "extra_post_text"
+    private fun uriToBase64(uri: Uri): String? {
+        val inputStream = contentResolver.openInputStream(uri)
+        val bitmap = BitmapFactory.decodeStream(inputStream)
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream)
+        val byteArray = outputStream.toByteArray()
+        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
+
+    private fun savePostToFirebase(text: String, imageBase64: String?) {
+        val database = FirebaseDatabase.getInstance().reference.child("posts")
+        val postId = database.push().key // Generate unique ID for the post
+
+        val postMap = mapOf(
+            "text" to text,
+            "imageBase64" to imageBase64,
+            "timestamp" to System.currentTimeMillis(),
+            "userId" to FirebaseAuth.getInstance().currentUser?.uid
+        )
+
+        postId?.let {
+            database.child(it).setValue(postMap).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Post uploaded successfully!", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this, "Failed to upload post: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+    companion object {
+        const val EXTRA_POST_TEXT = "com.example.learnmates.EXTRA_POST_TEXT"
+        const val EXTRA_POST_IMAGE_URI = "com.example.learnmates.EXTRA_POST_IMAGE_URI"
+    }
+
 }
