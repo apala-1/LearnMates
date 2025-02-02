@@ -26,6 +26,7 @@ import com.example.learnmates.ui.activity.MessageActivity
 import com.example.learnmates.ui.activity.NotificationActivity
 import com.example.learnmates.ui.activity.SavedActivity
 import com.example.learnmates.ui.activity.SearchActivity
+import com.example.learnmates.ui.activity.SettingsActivity
 import com.example.learnmates.ui.activity.SharePostsActivity
 import java.util.UUID
 
@@ -68,60 +69,71 @@ class ProfileFragment : Fragment() {
             binding.aboutMeSection.visibility = View.GONE
         }
 
-        fun showPopupMenu(view: View) {
-            val popupMenu = PopupMenu(requireContext(), view)
-            popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
-
-            popupMenu.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.home -> {
-                        startActivity(Intent(requireContext(), HomeActivity::class.java))
-                        true
-                    }
-
-                    R.id.profile -> {
-                        Toast.makeText(
-                            context,
-                            "You are currently in the profile page",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        true
-                    }
-
-                    R.id.message -> {
-                        startActivity(Intent(requireContext(), MessageActivity::class.java))
-                        true
-                    }
-
-                    R.id.search -> {
-                        startActivity(Intent(requireContext(), SearchActivity::class.java))
-                        true
-                    }
-
-                    R.id.notification -> {
-                        startActivity(Intent(requireContext(), NotificationActivity::class.java))
-                        true
-                    }
-
-                    R.id.feedback -> {
-                        startActivity(Intent(requireContext(), FeedbackActivity::class.java))
-                        true
-                    }
-
-                    R.id.saved -> {
-                        startActivity(Intent(requireContext(), SavedActivity::class.java))
-                        true
-                    }
-
-                    R.id.helpcenter -> {
-                        startActivity(Intent(requireContext(), HelpCenterActivity::class.java))
-                        true
-                    }
-
-                    else -> false
-                }
-            }
-            popupMenu.show()
+        // Make sure the popup menu is triggered by some UI element, e.g., a button
+        binding.additionalIcon.setOnClickListener {
+            showPopupMenu(it)
         }
+    }
+
+    // Move this function outside onViewCreated
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(requireContext(), view)
+        popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    startActivity(Intent(requireContext(), HomeActivity::class.java))
+                    true
+                }
+
+                R.id.profile -> {
+                    Toast.makeText(
+                        context,
+                        "You are currently in the profile page",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+
+                R.id.message -> {
+                    startActivity(Intent(requireContext(), MessageActivity::class.java))
+                    true
+                }
+
+                R.id.search -> {
+                    startActivity(Intent(requireContext(), SearchActivity::class.java))
+                    true
+                }
+
+                R.id.notification -> {
+                    startActivity(Intent(requireContext(), NotificationActivity::class.java))
+                    true
+                }
+
+                R.id.feedback -> {
+                    startActivity(Intent(requireContext(), FeedbackActivity::class.java))
+                    true
+                }
+
+                R.id.saved -> {
+                    startActivity(Intent(requireContext(), SavedActivity::class.java))
+                    true
+                }
+
+                R.id.helpcenter -> {
+                    startActivity(Intent(requireContext(), HelpCenterActivity::class.java))
+                    true
+                }
+
+                R.id.settings -> {
+                    startActivity(Intent(requireContext(), SettingsActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
 }
