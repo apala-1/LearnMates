@@ -13,7 +13,6 @@ import com.example.learnmates.R
 import com.example.learnmates.databinding.ActivityHomeBinding
 import com.example.learnmates.ui.fragment.HomePageFragment
 import androidx.activity.viewModels
-import com.example.learnmates.viewmodel.PostViewModel
 
 class HomeActivity : AppCompatActivity() {
 

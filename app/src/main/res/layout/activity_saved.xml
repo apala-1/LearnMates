@@ -5,132 +5,46 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/white"
     tools:context=".ui.activity.SavedActivity">
 
+    <!-- Header Section -->
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/savedPostsHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="658dp"
-        android:text="Saved Resources"
-        android:textColor="@android:color/black"
+        android:text="Your Saved Posts"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="sans-serif"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Posts RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/savedPostsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/savedPostsHeading"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/scrollView2"
-        android:layout_width="412dp"
-        android:layout_height="628dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="102dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Cute Background and Styling -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/pink"
+        app:cardCornerRadius="16dp"
+        android:elevation="5dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/unsaveBtn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="268dp"
-            android:layout_marginTop="248dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="332dp"
-            android:background="@drawable/button_background"
-            android:text="Unsave"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="432dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/agile" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="304dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="205dp"
-            android:layout_marginEnd="53dp"
-            android:layout_marginBottom="395dp"
-            android:background="@color/material_dynamic_tertiary95"
-            android:gravity="center"
-            android:text="Sneha Manandhar"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="319dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="142dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/agile" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/unsaveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="264dp"
-            android:layout_marginTop="536dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="44dp"
-            android:background="@drawable/button_background"
-            android:text="Unsave"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="304dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="495dp"
-            android:layout_marginEnd="53dp"
-            android:layout_marginBottom="105dp"
-            android:background="@color/material_dynamic_tertiary95"
-            android:gravity="center"
-            android:text="Sneha Manandhar"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
