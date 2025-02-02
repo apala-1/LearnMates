@@ -5,6 +5,7 @@
     "project_id": "learnmates-842cd",
     "storage_bucket": "learnmates-842cd.firebasestorage.app"
   },
+
   "client": [
     {
       "client_info": {

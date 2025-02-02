@@ -8,27 +8,24 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.activity.HelpCenterActivity">
 
+    <!-- Replacing SearchView with TextView -->
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchText"
         android:layout_width="354dp"
         android:layout_height="55dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="339dp"
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="338dp"
-        android:background="@drawable/button_background"
-        android:elevation="4dp"
-        android:iconifiedByDefault="false"
-        android:maxWidth="600dp"
-        android:padding="10dp"
-        android:queryBackground="@color/white"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:queryHint="Search FAQs"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
+
+    <!-- Title -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -47,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Logo -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="184dp"
@@ -61,6 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
+    <!-- Subtitle/Quote -->
     <TextView
         android:id="@+id/quote"
         android:layout_width="wrap_content"
@@ -78,6 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Section: General -->
     <TextView
         android:id="@+id/general"
         android:layout_width="wrap_content"
@@ -95,6 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Section: Policies -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -112,6 +113,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: Community Guidelines -->
     <TextView
         android:id="@+id/communityguidelines"
         android:layout_width="wrap_content"
@@ -129,6 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: Report Abuse -->
     <TextView
         android:id="@+id/reportabuse"
         android:layout_width="wrap_content"
@@ -146,6 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: Privacy -->
     <TextView
         android:id="@+id/privacyandsecurity"
         android:layout_width="wrap_content"
@@ -163,6 +167,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: Contact Support -->
     <TextView
         android:id="@+id/contactSupport"
         android:layout_width="wrap_content"
@@ -180,6 +185,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: Getting Started -->
     <TextView
         android:id="@+id/gettingStarted"
         android:layout_width="wrap_content"
@@ -197,6 +203,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Links: FAQs -->
     <TextView
         android:id="@+id/faqs"
         android:layout_width="wrap_content"
@@ -214,5 +221,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/faqLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="456dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-147dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
