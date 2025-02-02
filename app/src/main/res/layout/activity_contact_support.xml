@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/send"
+        android:id="@+id/sendButton"
         android:layout_width="162dp"
         android:layout_height="48dp"
         android:layout_marginStart="124dp"
