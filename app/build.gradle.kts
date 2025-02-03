@@ -58,5 +58,8 @@ dependencies {
     implementation ("androidx.fragment:fragment-ktx:1.6.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.google.firebase:firebase-storage:20.2.0")
+    implementation ("com.google.firebase:firebase-database:20.0.5")
+    implementation ("com.cloudinary:cloudinary-android:2.0.0")
+
 
 }
