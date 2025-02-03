@@ -8,7 +8,6 @@ data class PostModel (
     var userName: String = "",
     var postText: String = "",
     var postImage: String = "",
-    var localImageUri: Uri? = null,
     var likeCount: Int,
     var savePost: Boolean = false
 ){
