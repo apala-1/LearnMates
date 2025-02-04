@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.learnmates.R
 import com.example.learnmates.model.PostModel
+import com.google.firebase.database.FirebaseDatabase
 
 class PostAdapter(private val postList: List<PostModel>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -33,16 +34,18 @@ class PostAdapter(private val postList: List<PostModel>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = postList[position]
+        val database = FirebaseDatabase.getInstance().getReference("posts").child(post.postId) // Reference to Firebase post
 
-        // Set the member name and username
+        // Set Member Name and Username
         holder.tvPostMemberName.text = post.postMemberName
         holder.tvUserName.text = "@${post.userName}"
         holder.tvPostText.text = post.postText
 
-        // Display image from Cloudinary if available
+        // Load Image from Cloudinary (or Placeholder)
         if (post.postImage.isNotEmpty()) {
             Glide.with(holder.itemView.context)
-                .load(post.postImage)  // Load image URL from Cloudinary
+                .load(post.postImage)
+                .placeholder(R.drawable.baseline_fireplace_24) // Show a placeholder before loading
                 .into(holder.ivPostImage)
             holder.ivPostImage.visibility = View.VISIBLE
         } else {
@@ -52,17 +55,26 @@ class PostAdapter(private val postList: List<PostModel>) : RecyclerView.Adapter<
         // Set Like Count
         holder.tvLikeCount.text = "${post.likeCount} Likes"
 
-        // Handle Like Button Click
+        // Set Initial Save Post Icon
+        holder.ivSavePost.setImageResource(
+            if (post.savePost) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
+        )
+
+        // Handle Like Button Click (Update Firebase)
         holder.ivLike.setOnClickListener {
-            post.likeCount += 1
-            notifyItemChanged(position)
+            val newLikeCount = post.likeCount + 1
+            database.child("likeCount").setValue(newLikeCount)
+            post.likeCount = newLikeCount
+            holder.tvLikeCount.text = "$newLikeCount Likes"
         }
 
-        // Handle Save Post Click
+        // Handle Save Post Click (Update Firebase)
         holder.ivSavePost.setOnClickListener {
-            post.savePost = !post.savePost
+            val newSaveStatus = !post.savePost
+            database.child("savePost").setValue(newSaveStatus)
+            post.savePost = newSaveStatus
             holder.ivSavePost.setImageResource(
-                if (post.savePost) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_24
+                if (newSaveStatus) R.drawable.baseline_bookmark_24 else R.drawable.baseline_bookmark_border_24
             )
         }
     }
