@@ -1,23 +1,14 @@
 package com.example.learnmates.ui.fragment
 
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learnmates.R
 import com.example.learnmates.databinding.FragmentProfileBinding
-import com.example.learnmates.viewmodel.UserViewModel
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.auth.FirebaseAuth
-import android.view.MenuItem
 import android.widget.PopupMenu
 import com.example.learnmates.ui.activity.FeedbackActivity
 import com.example.learnmates.ui.activity.HelpCenterActivity
@@ -28,7 +19,6 @@ import com.example.learnmates.ui.activity.SavedActivity
 import com.example.learnmates.ui.activity.SearchActivity
 import com.example.learnmates.ui.activity.SettingsActivity
 import com.example.learnmates.ui.activity.SharePostsActivity
-import java.util.UUID
 
 class ProfileFragment : Fragment() {
 
@@ -44,6 +34,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        binding.SharePosts.setOnClickListener {
+            startActivity(Intent(requireContext(), SharePostsActivity::class.java))
+        }
 
         binding.aboutMeButton.setOnClickListener {
             binding.aboutMeSection.visibility = View.VISIBLE
@@ -69,13 +63,12 @@ class ProfileFragment : Fragment() {
             binding.aboutMeSection.visibility = View.GONE
         }
 
-        // Make sure the popup menu is triggered by some UI element, e.g., a button
         binding.additionalIcon.setOnClickListener {
             showPopupMenu(it)
         }
     }
 
-    // Move this function outside onViewCreated
+
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
