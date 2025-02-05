@@ -1,9 +1,7 @@
 package com.example.learnmates.repository
 
-import com.example.learnmates.model.SearchModel
+import com.example.learnmates.model.UserModel
 
 interface SearchRepository {
-    fun getAllUsers(callback:
-                          (List<SearchModel>?,Boolean,
-                           String) -> Unit)
+    fun getUsersByName(query: String, callback: (List<UserModel>) -> Unit)
 }

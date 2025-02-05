@@ -75,7 +75,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="218dp"
-        android:layout_marginTop="341dp"
+        android:layout_marginTop="69dp"
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="342dp"
         android:background="@drawable/button_background"
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/additionalIcon" />
 
 
 
@@ -140,34 +140,15 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="341dp"
-        android:layout_marginEnd="235dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="42dp"
         android:layout_marginBottom="342dp"
         android:background="@drawable/button_background"
         android:text="@string/about_me"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/SharePosts"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/sharedResourcesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="241dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/shared_resources"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutMeSection" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
 
     <ImageView
@@ -175,24 +156,15 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="344dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="43dp"
-        android:layout_marginBottom="459dp"
+        android:layout_marginBottom="69dp"
         android:src="@drawable/baseline_dehaze_24"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SharePosts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coverPhoto"
         tools:ignore="NotSibling" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="411dp"
-        android:layout_height="275dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sharedResourcesText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

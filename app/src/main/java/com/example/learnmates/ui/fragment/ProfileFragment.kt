@@ -18,6 +18,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learnmates.R
+import com.example.learnmates.SearchActivity
 import com.example.learnmates.adapter.PostAdapter
 import com.example.learnmates.databinding.FragmentProfileBinding
 import com.example.learnmates.model.Post
@@ -47,16 +48,6 @@ class ProfileFragment : Fragment() {
 
         val repo = UserRepositoryImpl()
         userViewModel = UserViewModel(repo)
-
-        postAdapter = PostAdapter(mutableListOf())
-        binding.recyclerView.apply {
-            adapter = postAdapter
-            layoutManager = LinearLayoutManager(context)
-        }
-
-        postViewModel.posts.observe(viewLifecycleOwner) { posts ->
-            postAdapter.updatePosts(posts)
-        }
 
         binding.SharePosts.setOnClickListener {
             val intent = Intent(requireContext(), SharePostsActivity::class.java)

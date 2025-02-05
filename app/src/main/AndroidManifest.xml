@@ -94,7 +94,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.SearchActivity"
+            android:name=".SearchActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

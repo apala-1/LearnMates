@@ -1,23 +1,22 @@
 package com.example.learnmates.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.learnmates.model.SearchModel
-import com.example.learnmates.repository.SearchRepository
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.learnmates.model.UserModel
+import com.example.learnmates.repository.SearchRepositoryImpl
+import kotlinx.coroutines.launch
 
-class SearchViewModel(val repository: SearchRepository) {
-    var _allusers = MutableLiveData<List<SearchModel>?>()
+class SearchViewModel(private val repository: SearchRepositoryImpl) : ViewModel() {
 
-        get() = _allusers
+    private val _allUsers = MutableLiveData<List<UserModel>>()
+    val allUsers: LiveData<List<UserModel>> = _allUsers
 
-
-    fun getAllUsers(){
-        repository.getAllUsers(){
-                users, success, message ->
-            if(success){
-                _allusers.value = users
-            }
+    fun getUsersByName(name: String) {
+        viewModelScope.launch {
+            val result = repository.searchUsers(name)
+            _allUsers.postValue(result)
         }
-
     }
-
 }
