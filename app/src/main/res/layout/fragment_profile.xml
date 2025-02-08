@@ -74,12 +74,17 @@
         android:id="@+id/SharePosts"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="341dp"
         android:layout_marginEnd="43dp"
+        android:layout_marginBottom="342dp"
         android:background="@drawable/button_background"
         android:text="Share Posts"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additionalIcon" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <LinearLayout
@@ -98,17 +103,18 @@
             android:id="@+id/aboutMeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Enter your About Me"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="Enter your About Me"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            />
 
         <!-- Horizontal layout for buttons -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/editButton"
@@ -134,11 +140,15 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="341dp"
+        android:layout_marginEnd="235dp"
+        android:layout_marginBottom="342dp"
         android:background="@drawable/button_background"
         android:text="@string/about_me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -146,24 +156,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="241dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/shared_resources"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutMeButton" />
+        app:layout_constraintTop_toBottomOf="@id/aboutMeSection" />
+
+
+
 
     <ImageView
         android:id="@+id/additionalIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginTop="248dp"
         android:layout_marginEnd="43dp"
+        android:layout_marginBottom="459dp"
         android:src="@drawable/baseline_dehaze_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coverPhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="NotSibling" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="411dp"
+        android:layout_height="275dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sharedResourcesText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
