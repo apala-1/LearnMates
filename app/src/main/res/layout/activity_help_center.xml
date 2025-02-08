@@ -8,24 +8,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.activity.HelpCenterActivity">
 
-    <!-- Replacing SearchView with TextView -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchText"
-        android:layout_width="354dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="339dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="338dp"
-        android:queryHint="Search FAQs"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
-    <!-- Title -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -44,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="184dp"
@@ -59,7 +40,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <!-- Subtitle/Quote -->
     <TextView
         android:id="@+id/quote"
         android:layout_width="wrap_content"
@@ -77,7 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Section: General -->
     <TextView
         android:id="@+id/general"
         android:layout_width="wrap_content"
@@ -97,7 +76,7 @@
 
     <!-- Section: Policies -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/policies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="43dp"
