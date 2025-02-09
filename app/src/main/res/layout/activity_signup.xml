@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signUpBtn"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="595dp"
         android:layout_marginEnd="81dp"
@@ -27,33 +27,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="297dp"
-        android:layout_height="44dp"
-        android:layout_below="@id/editTextEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="56dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
         android:layout_marginTop="470dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="207dp"
-        android:background="@drawable/formchanges"
-        android:fontFamily="@font/inria"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingLeft="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/formchanges"
+            android:fontFamily="@font/inria"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="297dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_below="@id/editTextUsername"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="56dp"
@@ -90,8 +91,7 @@
     <CheckBox
         android:id="@+id/termsCheckbox"
         android:layout_width="298dp"
-        android:layout_height="42dp"
-        android:layout_below="@id/editTextPassword"
+        android:layout_height="48dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="59dp"
         android:layout_marginTop="537dp"
@@ -108,7 +108,7 @@
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="297dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_below="@id/editTextFullName"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="56dp"
@@ -130,7 +130,7 @@
     <EditText
         android:id="@+id/editTextFullName"
         android:layout_width="297dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_below="@id/subTitleText"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="56dp"
