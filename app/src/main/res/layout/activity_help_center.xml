@@ -9,20 +9,6 @@
     tools:context=".ui.activity.HelpCenterActivity">
 
     <!-- Replacing SearchView with TextView -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchText"
-        android:layout_width="354dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="339dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="338dp"
-        android:queryHint="Search FAQs"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <!-- Title -->
@@ -222,7 +208,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/faqLayout"
+        android:id="@+id/faqLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="456dp"
