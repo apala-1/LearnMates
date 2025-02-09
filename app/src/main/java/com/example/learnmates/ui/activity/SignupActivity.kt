@@ -65,6 +65,10 @@ class SignupActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.backBtn.setOnClickListener {
+            navigateToHome()
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -84,5 +88,13 @@ class SignupActivity : AppCompatActivity() {
                     message,Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun navigateToHome(){
+        val intent = Intent(
+            this@SignupActivity,
+            HomeActivity::class.java
+        )
+        startActivity(intent)
     }
 }

@@ -28,32 +28,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="297dp"
-        android:layout_height="44dp"
-        android:layout_centerHorizontal="true"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
-        android:layout_marginTop="455dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="222dp"
-        android:background="@drawable/formchanges"
-        android:fontFamily="@font/inria"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingLeft="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="450dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/formchanges"
+            android:fontFamily="@font/inria"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="297dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="58dp"
         android:layout_marginTop="387dp"
