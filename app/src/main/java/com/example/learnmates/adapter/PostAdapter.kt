@@ -55,7 +55,7 @@ class PostAdapter(
             holder.ivPostImage.visibility = View.GONE
         }
 
-    holder.tvLikeCount.text = "${post.likeCount}"
+        holder.tvLikeCount.text = "${post.likeCount}"
 
         checkIfLiked(post.postId, holder.ivLike)
 
@@ -63,23 +63,33 @@ class PostAdapter(
             toggleLike(post, holder)
         }
 
-        holder.ivSavePost.setOnClickListener {
-            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@setOnClickListener
-            val userSaveRef = FirebaseDatabase.getInstance().getReference("users")
-                .child(userId).child("savedPosts").child(post.postId)
+        // ✅ Fetch the saved state when binding
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val userSaveRef = FirebaseDatabase.getInstance().getReference("users")
+            .child(userId).child("savedPosts").child(post.postId)
 
-            userSaveRef.get().addOnSuccessListener { snapshot ->
-                if (snapshot.exists()) {
-                    userSaveRef.removeValue()
-                    holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_border_24)
-                } else {
-                    userSaveRef.setValue(post)  // Save the post when it's not saved
-                    holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
-                }
+        userSaveRef.get().addOnSuccessListener { snapshot ->
+            post.savePost = snapshot.exists()  // Set the correct saved state
+            holder.ivSavePost.setImageResource(
+                if (post.savePost) R.drawable.baseline_bookmark_24
+                else R.drawable.baseline_bookmark_border_24
+            )
+        }
+
+        // ✅ Handle save/unsave click event
+        holder.ivSavePost.setOnClickListener {
+            val isSaved = post.savePost  // Get the current save state
+
+            if (isSaved) {
+                userSaveRef.removeValue()
+                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_border_24)
+            } else {
+                userSaveRef.setValue(post)
+                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
             }
 
-            // Call the onSaveClickListener to handle saved posts in HomePageFragment or SavedActivity
-            onSaveClickListener(post)
+            post.savePost = !isSaved  // Toggle local state
+            onSaveClickListener(post) // Notify fragment/activity
         }
     }
 
