@@ -27,6 +27,10 @@ class LogInActivity : AppCompatActivity() {
         setContentView(binding.root)
         loadingUtils = LoadingUtils(this)
         firebaseAuth = FirebaseAuth.getInstance()
+        if (firebaseAuth.currentUser !=null){
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
         binding.loginBtn.setOnClickListener {
             val email  =binding.editTextEmail.text.toString()
             val password  =binding.editTextPassword.text.toString()
