@@ -10,8 +10,10 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(private val repository: SearchRepositoryImpl) : ViewModel() {
 
-    private val _allUsers = MutableLiveData<List<UserModel>>()
-    val allUsers: LiveData<List<UserModel>> = _allUsers
+     var _allUsers = MutableLiveData<List<UserModel>>()
+     var allUsers = MutableLiveData<List<UserModel>>()
+         get() = _allUsers
+
 
     fun getUsersByName(name: String) {
         viewModelScope.launch {
