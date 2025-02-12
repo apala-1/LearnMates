@@ -101,7 +101,15 @@ class UserRepositoryImpl: UserRepository {
         }
     }
 
+    override fun editProfile(userId: String, data: Map<String, Any>, callback: (Boolean, String) -> Unit) {
+        val databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(userId)
+        databaseRef.updateChildren(data)
+            .addOnSuccessListener {
+                callback(true, "Profile updated successfully")
             }
+            .addOnFailureListener {
+                callback(false, "Profile update failed")
             }
     }
+
 }
