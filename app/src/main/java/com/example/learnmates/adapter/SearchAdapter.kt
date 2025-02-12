@@ -33,7 +33,7 @@ class SearchAdapter(val context: Context, var data: ArrayList<UserModel>) :
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val user = data[position]
-        holder.uName.text = user.fullname ?: user.username // ✅ Use correct property
+        holder.uName.text = user.fullname ?: user.username
 
         holder.addBtn.setOnClickListener {
             // Get current user's UID (Sneha's UID)
