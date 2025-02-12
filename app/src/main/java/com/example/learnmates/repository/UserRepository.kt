@@ -19,6 +19,5 @@ interface UserRepository {
 
     fun logout(callback: (Boolean, String) -> Unit)
 
-    fun editProfile(userId: String, data:Map<String, Any>,
                     callback: (Boolean, String) -> Unit)
 }
