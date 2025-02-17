@@ -14,63 +14,71 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class SearchAdapter(val context: Context, var data: ArrayList<UserModel>) :
-    RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
+class SearchAdapter(private val context: Context, private val userList: ArrayList<UserModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+    private val friendRequestsDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("friendRequests")
+    private val currentUserId: String = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+    private val usersDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
 
-    class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val uName: TextView = itemView.findViewById(R.id.searchedName)
-        val addBtn: Button = itemView.findViewById(R.id.addBtn)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        val itemView: View = LayoutInflater.from(context).inflate(R.layout.item_search, parent, false)
-        return SearchViewHolder(itemView)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val user = userList[position]
+        holder.usernameTextView.text = user.username
+        holder.fullnameTextView.text = user.fullname
+
+        holder.addFriendButton.setOnClickListener {
+            sendFriendRequest(user, holder)
+        }
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return userList.size
     }
 
-    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        val user = data[position]
-        holder.uName.text = user.fullname ?: user.username
+    private fun sendFriendRequest(user: UserModel, holder: ViewHolder) {
+        if (user.userId == null) return
 
-        holder.addBtn.setOnClickListener {
-            // Get current user's UID (Sneha's UID)
-            val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        val requestRef = friendRequestsDatabase.child(user.userId).child(currentUserId)
+        requestRef.setValue(true)
+            .addOnSuccessListener {
+                friendRequestsDatabase.child(currentUserId).child(user.userId).setValue(false)
+                holder.addFriendButton.isEnabled = false
+                holder.addFriendButton.text = "Request Sent"
 
-            if (currentUserId != null && user.userId != currentUserId) {
-                // Get Firebase database reference
-                val database = FirebaseDatabase.getInstance().getReference("users")
+                // Get the current user's name (sender's name)
+                val senderNameRef = usersDatabase.child(currentUserId).child("fullname")
+                senderNameRef.get().addOnSuccessListener { snapshot ->
+                    val senderName = snapshot.getValue(String::class.java) ?: "Unknown User"
 
-                // Apala's UID (friend) is being added to Sneha's friend list
-                val friendId = user.userId
-                val friendRef = database.child(currentUserId).child("friends").child(friendId)
+                    // Store notification in Firebase with sender's name
+                    val notificationRef = FirebaseDatabase.getInstance().getReference("notifications").child(user.userId)
+                    val notificationId = notificationRef.push().key
 
-                // Add friend (Apala) to Sneha's friend list
-                friendRef.setValue(true).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Remove user from the search list (Apala will no longer appear)
-                        data.removeAt(position) // Remove the friend from the list
-                        notifyDataSetChanged() // Update the RecyclerView
+                    val notificationData = hashMapOf(
+                        "senderId" to currentUserId,
+                        "senderName" to senderName, // Include sender's name here
+                        "message" to "sent you a friend request",
+                        "timestamp" to System.currentTimeMillis()
+                    )
 
-                        // Optionally, add Sneha's UID to Apala's friend list (reciprocal friendship)
-                        val userFriendRef = database.child(friendId).child("friends").child(currentUserId)
-                        userFriendRef.setValue(true).addOnCompleteListener { task2 ->
-                            if (task2.isSuccessful) {
-                                // Successfully updated Apala's friend list
-                                Toast.makeText(context, "${user.fullname} added to your friends!", Toast.LENGTH_SHORT).show()
-                            } else {
-                                // Failed to add Sneha to Apala's friend list
-                                Toast.makeText(context, "Failed to add ${user.fullname} to friend list.", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    } else {
-                        // Display failure message using Toast
-                        Toast.makeText(context, "Failed to add ${user.fullname} as friend.", Toast.LENGTH_SHORT).show()
+                    notificationId?.let {
+                        notificationRef.child(it).setValue(notificationData)
                     }
+
+                    Toast.makeText(context, "Friend request sent!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
+            .addOnFailureListener {
+                Toast.makeText(context, "Failed to send request", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val usernameTextView: TextView = itemView.findViewById(R.id.tvUserName)
+        val fullnameTextView: TextView = itemView.findViewById(R.id.tvFullName)
+        val addFriendButton: Button = itemView.findViewById(R.id.addFriendButton)
     }
 }
