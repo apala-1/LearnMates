@@ -46,6 +46,8 @@ class SignupActivity : AppCompatActivity() {
                         userId, email, fullname, username
                     )
                     addUser(userModel)
+                    val intent = Intent(this@SignupActivity, HomeActivity::class.java)
+                    startActivity(intent)
                 }else{
                     loadingUtils.dismiss()
                     Toast.makeText(this@SignupActivity,
@@ -93,7 +95,7 @@ class SignupActivity : AppCompatActivity() {
     private fun navigateToHome(){
         val intent = Intent(
             this@SignupActivity,
-            HomeActivity::class.java
+            FrontPageActivity::class.java
         )
         startActivity(intent)
     }
