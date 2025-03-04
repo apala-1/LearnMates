@@ -10,8 +10,8 @@
 
     <!-- Menu Image -->
     <ImageView
-        android:id="@+id/menulogo"
-        android:layout_width="37dp"
+        android:id="@+id/imageView3"
+        android:layout_width="42dp"
         android:layout_height="37dp"
         android:layout_marginStart="344dp"
         android:layout_marginTop="78dp"
