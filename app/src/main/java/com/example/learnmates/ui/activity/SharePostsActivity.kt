@@ -74,6 +74,12 @@ class SharePostsActivity : AppCompatActivity() {
             } else {
                 Log.e("Post", "User is not logged in!")
             }
+            val intent: Intent =
+                Intent(
+                    this@SharePostsActivity,
+                    HomeActivity::class.java
+                )
+            startActivity(intent)
         }
 
 

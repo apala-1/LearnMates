@@ -9,19 +9,6 @@
     tools:context=".ui.activity.NotificationActivity">
 
     <!-- Menu Image -->
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="42dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="344dp"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="616dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_menu_24" />
 
     <!-- Notifications Title -->
     <TextView

@@ -1,5 +1,6 @@
 package com.example.learnmates.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -41,9 +42,16 @@ class FeedbackActivity : AppCompatActivity() {
                     database.child(feedbackId).setValue(feedbackData).addOnCompleteListener {
                         if (it.isSuccessful) {
                             Toast.makeText(this, "Feedback submitted successfully!", Toast.LENGTH_SHORT).show()
+                            val intent: Intent =
+                                Intent(
+                                    this@FeedbackActivity,
+                                    HomeActivity::class.java
+                                )
+                            startActivity(intent)
                         } else {
                             Toast.makeText(this, "Failed to submit feedback.", Toast.LENGTH_SHORT).show()
                         }
+
                     }
                 }
             }
