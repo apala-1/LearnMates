@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.learnmates.R
 import com.example.learnmates.databinding.ActivitySearchBinding
 import com.example.learnmates.model.NotificationModel
+import com.example.learnmates.ui.fragment.HomePageFragment
+import com.example.learnmates.ui.fragment.ProfileFragment
 import com.google.firebase.database.*
 import com.google.firebase.database.ServerValue
 
@@ -137,17 +139,14 @@ class SearchActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this@SearchActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@SearchActivity, HomePageFragment::class.java))
                     true
                 }
 
                 R.id.profile -> {
-                    Toast.makeText(
-                        this@SearchActivity,
-                        "You are currently in the profile page",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    startActivity(Intent(this@SearchActivity, ProfileFragment::class.java))
                     true
+
                 }
 
                 R.id.message -> {
@@ -156,7 +155,11 @@ class SearchActivity : AppCompatActivity() {
                 }
 
                 R.id.search -> {
-                    startActivity(Intent(this@SearchActivity, SearchActivity::class.java))
+                    Toast.makeText(
+                        this@SearchActivity,
+                        "You are currently in the search page",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     true
                 }
 

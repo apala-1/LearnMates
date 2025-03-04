@@ -15,6 +15,8 @@ import com.example.learnmates.R
 import com.example.learnmates.adapter.NotificationsAdapter
 import com.example.learnmates.databinding.ActivityNotificationBinding
 import com.example.learnmates.model.NotificationModel
+import com.example.learnmates.ui.fragment.HomePageFragment
+import com.example.learnmates.ui.fragment.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ServerValue
@@ -133,16 +135,12 @@ class NotificationActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this@NotificationActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@NotificationActivity, HomePageFragment::class.java))
                     true
                 }
 
                 R.id.profile -> {
-                    Toast.makeText(
-                        this@NotificationActivity,
-                        "You are currently in the profile page",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    startActivity(Intent(this@NotificationActivity, ProfileFragment::class.java))
                     true
                 }
 
@@ -157,7 +155,11 @@ class NotificationActivity : AppCompatActivity() {
                 }
 
                 R.id.notification -> {
-                    startActivity(Intent(this@NotificationActivity, NotificationActivity::class.java))
+                    Toast.makeText(
+                        this@NotificationActivity,
+                        "You are currently in the notification page",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     true
                 }
 
