@@ -73,7 +73,7 @@ class LogInActivity : AppCompatActivity() {
         }
 
         binding.backBtn.setOnClickListener {
-            navigateToHome()
+            navigateToFront()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -82,6 +82,14 @@ class LogInActivity : AppCompatActivity() {
             insets
         }
     }
+    private fun navigateToFront(){
+        val intent = Intent(
+            this@LogInActivity,
+            FrontPageActivity::class.java
+        )
+        startActivity(intent)
+    }
+
     private fun navigateToHome(){
         val intent = Intent(
             this@LogInActivity,
