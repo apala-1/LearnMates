@@ -28,7 +28,7 @@ class MessageActivity : AppCompatActivity() {
 
         val findMoreBuddiesButton: Button = findViewById(R.id.findMoreBuddies)
         findMoreBuddiesButton.setOnClickListener {
-            val intent = Intent(this, FindBuddiesActivity::class.java)
+            val intent = Intent(this@MessageActivity, SearchActivity::class.java)
             startActivity(intent)
         }
 

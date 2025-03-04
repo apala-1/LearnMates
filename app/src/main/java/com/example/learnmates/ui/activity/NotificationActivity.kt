@@ -45,6 +45,7 @@ class NotificationActivity : AppCompatActivity() {
         }
 
 
+
         // Set up edge-to-edge layout for the activity
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
