@@ -61,15 +61,11 @@ class SavedActivity : AppCompatActivity() {
 
                 for (postSnapshot in snapshot.children) {
                     val post = postSnapshot.getValue(PostModel::class.java)
-                    Log.d("SavedActivity", "Post Retrieved: ${post?.postText}")
                     post?.let { savedPostsList.add(it) }
                 }
 
                 Log.d("SavedActivity", "Total saved posts: ${savedPostsList.size}")
-
-                // 🔥 Set adapter again to force UI refresh
-                savedPostAdapter = PostAdapter(savedPostsList) { post -> handleSavePost(post) }
-                recyclerView.adapter = savedPostAdapter
+                savedPostAdapter.notifyDataSetChanged() // 🔥 Instead of resetting adapter
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -80,19 +76,40 @@ class SavedActivity : AppCompatActivity() {
 
 
 
+
     private fun handleSavePost(post: PostModel) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val userSaveRef = database.child(userId).child("savedPosts").child(post.postId)
 
-        userSaveRef.get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
-                // Post is already saved, unsave it
-                userSaveRef.removeValue()
-            } else {
-                // Post is not saved, save it
-                userSaveRef.setValue(post)
+        userSaveRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    userSaveRef.removeValue().addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d("SavedActivity", "Post removed successfully")
+                            savedPostsList.remove(post) // Remove from local list
+                            savedPostAdapter.notifyDataSetChanged() // Refresh UI
+                        } else {
+                            Log.e("SavedActivity", "Failed to remove post")
+                        }
+                    }
+                } else {
+                    userSaveRef.setValue(post).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d("SavedActivity", "Post saved successfully")
+                            savedPostsList.add(post) // Add to local list
+                            savedPostAdapter.notifyDataSetChanged()
+                        } else {
+                            Log.e("SavedActivity", "Failed to save post")
+                        }
+                    }
+                }
             }
-            loadSavedPosts() // Reload saved posts after save/unsave action
-        }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("SavedActivity", "Error checking saved post", error.toException())
+            }
+        })
     }
+
 }
