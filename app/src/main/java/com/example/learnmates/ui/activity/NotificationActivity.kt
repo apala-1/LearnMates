@@ -1,7 +1,10 @@
 package com.example.learnmates.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,13 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learnmates.R
 import com.example.learnmates.adapter.NotificationsAdapter
+import com.example.learnmates.databinding.ActivityNotificationBinding
 import com.example.learnmates.model.NotificationModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ServerValue
 
 class NotificationActivity : AppCompatActivity() {
-
+    lateinit var binding: ActivityNotificationBinding
     private lateinit var notificationsAdapter: NotificationsAdapter
     private val notificationsList = ArrayList<NotificationModel>()
     private val notificationsDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("notifications")
@@ -25,13 +29,19 @@ class NotificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notification)
+        binding = ActivityNotificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Set up RecyclerView and adapter
         notificationsAdapter = NotificationsAdapter(notificationsList, currentUserId)
         val recyclerView: RecyclerView = findViewById(R.id.notificationsRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = notificationsAdapter
+
+        binding.menulogo.setOnClickListener {
+            showPopupMenu(it)
+        }
+
 
         // Set up edge-to-edge layout for the activity
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -49,6 +59,7 @@ class NotificationActivity : AppCompatActivity() {
         // Fetch and update the notifications list
         fetchNotifications()
     }
+
 
     private fun fetchNotifications() {
         val notificationsRef = FirebaseDatabase.getInstance().getReference("notifications")
@@ -114,4 +125,66 @@ class NotificationActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Friend request rejected", Toast.LENGTH_SHORT).show()
     }
+
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(this@NotificationActivity, view) // Use 'this@NotificationActivity' instead of requireContext()
+        popupMenu.menuInflater.inflate(R.menu.dropdown, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    startActivity(Intent(this@NotificationActivity, HomeActivity::class.java))
+                    true
+                }
+
+                R.id.profile -> {
+                    Toast.makeText(
+                        this@NotificationActivity,
+                        "You are currently in the profile page",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+
+                R.id.message -> {
+                    startActivity(Intent(this@NotificationActivity, MessageActivity::class.java))
+                    true
+                }
+
+                R.id.search -> {
+                    startActivity(Intent(this@NotificationActivity, SearchActivity::class.java))
+                    true
+                }
+
+                R.id.notification -> {
+                    startActivity(Intent(this@NotificationActivity, NotificationActivity::class.java))
+                    true
+                }
+
+                R.id.feedback -> {
+                    startActivity(Intent(this@NotificationActivity, FeedbackActivity::class.java))
+                    true
+                }
+
+                R.id.saved -> {
+                    startActivity(Intent(this@NotificationActivity, SavedActivity::class.java))
+                    true
+                }
+
+                R.id.helpcenter -> {
+                    startActivity(Intent(this@NotificationActivity, HelpCenterActivity::class.java))
+                    true
+                }
+
+                R.id.settings -> {
+                    startActivity(Intent(this@NotificationActivity, SettingsActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popupMenu.show()
+    }
+
 }

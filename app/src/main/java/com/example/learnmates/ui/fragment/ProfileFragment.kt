@@ -39,9 +39,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root
-
         loadUserProfile()
+        return binding.root
     }
 
     override fun onResume() {
@@ -54,14 +53,14 @@ class ProfileFragment : Fragment() {
         val databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId)
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
+                if (snapshot.exists() && isAdded) { // Ensure fragment is still attached
                     val fullName = snapshot.child("fullname").getValue(String::class.java) ?: ""
                     val username = snapshot.child("username").getValue(String::class.java) ?: ""
                     val profileImageUrl = snapshot.child("profileImageUrl").getValue(String::class.java) ?: ""
 
-                    // Update the UI with the new data
                     binding.profileName.text = fullName
                     binding.username.text = username
+
                     if (profileImageUrl.isNotEmpty()) {
                         Glide.with(requireContext()).load(profileImageUrl).into(binding.profileImage)
                     }
@@ -69,10 +68,13 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireContext(), "Failed to load profile", Toast.LENGTH_SHORT).show()
+                if (isAdded) { // Ensure fragment is attached before calling requireContext()
+                    Toast.makeText(requireContext(), "Failed to load profile", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

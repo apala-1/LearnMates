@@ -82,10 +82,10 @@ class PostAdapter(
 
             if (isSaved) {
                 userSaveRef.removeValue()
-                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_border_24)
+                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
             } else {
                 userSaveRef.setValue(post)
-                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
+                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_border_24)
             }
 
             post.savePost = !isSaved  // Toggle local state
