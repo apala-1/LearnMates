@@ -40,7 +40,7 @@ class NotificationActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = notificationsAdapter
 
-        binding.menulogo.setOnClickListener {
+        binding.imageView3.setOnClickListener {
             showPopupMenu(it)
         }
 
