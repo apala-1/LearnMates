@@ -8,7 +8,8 @@ data class UserModel (
     var email: String = "",
     var fullname: String = "",
     var username: String = "",
-    var profileImageUrl: String = ""
+    var profileImageUrl: String = "",
+    @Transient var savedPosts: Map<String, PostModel> = emptyMap()
 ): Parcelable{
     constructor(parcel: Parcel): this(
         parcel.readString() ?: "",

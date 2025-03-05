@@ -78,14 +78,23 @@ class PostAdapter(
 
         // ✅ Handle save/unsave click event
         holder.ivSavePost.setOnClickListener {
-            val isSaved = post.savePost  // Get the current save state
+            val isSaved = post.savePost  // Get current save state
+            val userSaveRef = FirebaseDatabase.getInstance()
+                .getReference("Users")
+                .child(userId)
+                .child("savedPosts")
+                .child(post.postId)
 
             if (isSaved) {
-                userSaveRef.removeValue()
-                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
-            } else {
-                userSaveRef.setValue(post)
+                // Instead of removing, update savePost to false
+                userSaveRef.child("savePost").setValue(false)
                 holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_border_24)
+            } else {
+                // Ensure post is saved and update savePost to true
+                userSaveRef.setValue(post).addOnSuccessListener {
+                    userSaveRef.child("savePost").setValue(true)
+                }
+                holder.ivSavePost.setImageResource(R.drawable.baseline_bookmark_24)
             }
 
             post.savePost = !isSaved  // Toggle local state

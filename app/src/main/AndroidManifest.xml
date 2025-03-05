@@ -140,6 +140,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.FindBuddiesActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.activity.FeedbackActivity"
             android:exported="true">
             <intent-filter>
